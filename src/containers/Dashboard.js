@@ -146,8 +146,12 @@ export default class {
     }
 
     bills.forEach(bill => {
+     // Ajout d'un Event listener seulement si l'element n'a pas de data-listener
+     if(!$(`#open-bill${bill.id}`).data('listener')) {
+      $(`#open-bill${bill.id}`).data('listener', true)
       $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
-    })
+    }      
+  })
 
     return bills
 
