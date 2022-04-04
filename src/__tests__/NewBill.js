@@ -36,7 +36,7 @@ describe("Given I am on NewBill Page", () => {
       const newBill = new NewBill({
         document,
         onNavigate,
-        store: null,
+        store: store,
         localStorage: window.localStorage,
       });
       //loading file

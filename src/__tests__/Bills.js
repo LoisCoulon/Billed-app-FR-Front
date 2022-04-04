@@ -39,7 +39,7 @@ describe("Given I am connected as an employee", () => {
 
     test("Then bills should be ordered from earliest to latest", () => {
       const html = BillsUI({
-        data: bills.sort((a, b) => new Date(b.date) - new Date(a.date)),
+        data: bills
       });
       document.body.innerHTML = html;
       const dates = screen

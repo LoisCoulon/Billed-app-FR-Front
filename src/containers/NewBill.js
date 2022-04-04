@@ -25,11 +25,9 @@ export default class NewBill {
     const fileName = filePath[filePath.length - 1];
     const formData = new FormData();
     const email = JSON.parse(localStorage.getItem("user")).email;
-    if (
-      e.target.value.includes("jpg") ||
-      e.target.value.includes("jpeg") ||
-      e.target.value.includes("png")
-    ) {
+    if (file.type.includes("image")) {
+      formData.append("file", file);
+      formData.append("email", email);
       this.store
         .bills()
         .create({
@@ -45,12 +43,7 @@ export default class NewBill {
         })
         .catch((error) => console.error(error));
     } else {
-      let errorFileFormat = document.createElement("p");
-      errorFileFormat.classList.add("text-warning-file");
-      errorFileFormat.setAttribute("data-testid", "errorFormatMessage");
-      errorFileFormat.innerText =
-        "Choisir un format supporté (.JPG, .JPEG, .PNG)";
-      e.target.parentNode.append(errorFileFormat);
+      alert("Choisir un format supporté (.JPG, .JPEG, .PNG)");
       e.target.value = "";
     }
   };
